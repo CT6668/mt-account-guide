@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美团账号功能接入指南</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- 顶部导航 -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo" onclick="navigate('home')">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="11" fill="#5E6AD2"/>
+            <path d="M7 12c0-2.5 2-4.5 5-4.5s5 2 5 4.5-2 4.5-5 4.5-5-2-5-4.5z" fill="#fff"/>
+          </svg>
+          <span class="logo-text">美团账号功能接入指南</span>
+        </div>
+        <nav class="nav-links">
+          <a onclick="navigate('home')" class="nav-link active" data-page="home">首页</a>
+          <a onclick="scrollToSection('section-login')" class="nav-link" data-page="section-login">账号登录</a>
+          <a onclick="scrollToSection('section-manage')" class="nav-link" data-page="section-manage">账号管理</a>
+          <a onclick="scrollToSection('section-contact')" class="nav-link" data-page="section-contact">找人地图</a>
+          <a onclick="navigate('mrd')" class="nav-link" data-page="mrd">去接入</a>
+          <a href="https://tt.sankuai.com/ticket/custom/create/11889/2617" target="_blank" class="nav-link">提TT咨询</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="main-content" id="mainContent">
+      <!-- 首页 -->
+      <div id="page-home" class="page active">
+        <!-- Hero区域 -->
+        <section class="hero">
+          <div class="hero-inner">
+            <h1>接入美团账号，覆盖全平台登录场景</h1>
+            <p class="hero-desc">一站式了解美团账号体系，快速接入登录、管理、安全等核心能力</p>
+            <div class="hero-stats">
+              <div class="stat-item"><span class="stat-num">App / H5 / PC / 小程序</span><span class="stat-label">全平台覆盖</span></div>
+              <div class="stat-item"><span class="stat-num">最快 3 天</span><span class="stat-label">完成接入</span></div>
+              <div class="stat-item"><span class="stat-num">45+</span><span class="stat-label">配套接入文档</span></div>
+            </div>
+            <div class="hero-cta">
+              <button class="btn-primary" onclick="navigate('mrd')">立即开始接入</button>
+              <button class="btn-secondary" onclick="scrollToSection('section-login')">浏览全部功能</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 模块一：账号登录功能 -->
+        <section id="section-login" class="module-section">
+          <div class="section-header">
+            <h2>🔐 账号登录功能</h2>
+            <p class="section-desc">提供多种登录方式和定制化登录页面，覆盖客户端、H5、PC全平台</p>
+          </div>
+          <div class="card-grid cards-with-image">
+            <div class="feature-card has-image" onclick="navigate('detail', 'login-client')">
+              <div class="card-image">
+                <img src="assets/client_login_password.png" alt="客户端登录">
+              </div>
+              <div class="card-body">
+                <h3>客户端登录</h3>
+                <p>提供美团标准客户端登录页面，支持手机验证码、密码登录等多种方式。支持按钮颜色定制、入口屏蔽、名称修改等可配置内容。</p>
+                <span class="card-tag">SDK接入</span>
+              </div>
+            </div>
+            <div class="feature-card has-image" onclick="navigate('detail', 'login-h5')">
+              <div class="card-image">
+                <img src="assets/h5_login.png" alt="H5-i版登录">
+              </div>
+              <div class="card-body">
+                <h3>H5-i版登录</h3>
+                <p>标准H5登录页面，支持LOGO、地区选择、按钮底色、文案内容、协议链接及颜色的定制。通过URL跳转方式接入。</p>
+                <span class="card-tag">URL接入</span>
+              </div>
+            </div>
+            <div class="feature-card has-image" onclick="navigate('detail', 'login-pc')">
+              <div class="card-image">
+                <img src="assets/pc_login.png" alt="PC扫码登录">
+              </div>
+              <div class="card-body">
+                <h3>PC扫码登录</h3>
+                <p>PC端通过扫码方式完成登录，支持登录页面样式配置。</p>
+                <span class="card-tag">扫码接入</span>
+              </div>
+            </div>
+            <div class="feature-card has-image" onclick="navigate('detail', 'union-login')">
+              <div class="card-image">
+                <video src="assets/union_login.mp4" autoplay loop muted playsinline></video>
+              </div>
+              <div class="card-body">
+                <h3>联合登录</h3>
+                <p>支持公司内业务与第三方App/小程序联合登录，通过OAuth2.0授权码模式实现美团账号登录。</p>
+                <span class="card-tag">OAuth2.0</span>
+              </div>
+            </div>
+            <div class="feature-card has-image" onclick="navigate('detail', 'custom-login')">
+              <div class="card-image">
+                <img src="assets/custom_login.png" alt="H5组件定制页面登录">
+              </div>
+              <div class="card-body">
+                <h3>H5组件定制页面登录</h3>
+                <p>以JS形式提供H5登录组件，业务方引入后自行定制样式。支持手机号验证码登录及微信/QQ环境第三方登录。</p>
+                <span class="card-tag">JS组件</span>
+              </div>
+            </div>
+            <div class="feature-card" onclick="navigate('detail', 'shared-session')">
+              <div class="card-body">
+                <h3>共享登录态 SDK</h3>
+                <p>微信小程序环境下H5页面之间共享登录态，实现完全静默登录，无授权弹窗。</p>
+                <span class="card-tag">小程序SDK</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 模块二：账号管理功能 -->
+        <section id="section-manage" class="module-section">
+          <div class="section-header">
+            <h2>👤 账号管理功能</h2>
+            <p class="section-desc">登录问题自助解决、账号找回、个人信息管理、账号安全、注销等全生命周期管理能力</p>
+          </div>
+          <div class="scroll-wrapper">
+            <button class="scroll-btn scroll-btn-left" onclick="scrollCards(this, -1)">‹</button>
+            <div class="card-scroll cards-with-image">
+              <div class="feature-card has-image" onclick="navigate('detail', 'login-problem')">
+                <div class="card-image">
+                  <img src="assets/login_problem.png" alt="遇到问题" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="card-body">
+                  <h3>遇到问题</h3>
+                  <p>登录遇到问题时提供自助解决功能，包含找回密码、手机号换绑、找回账号等入口。</p>
+                  <span class="card-tag">URL跳转</span>
+                </div>
+              </div>
+              <div class="feature-card has-image" onclick="navigate('detail', 'reset-password')">
+                <div class="card-image">
+                  <img src="assets/reset_password.png" alt="找回密码">
+                </div>
+                <div class="card-body">
+                  <h3>找回密码</h3>
+                  <p>支持用户通过手机验证码和实名重新设置账号的登录密码。</p>
+                  <span class="card-tag">URL跳转</span>
+                </div>
+              </div>
+              <div class="feature-card has-image" onclick="navigate('detail', 'find-account')">
+                <div class="card-image">
+                  <img src="assets/find_account.png" alt="找回账号">
+                </div>
+                <div class="card-body">
+                  <h3>找回账号</h3>
+                  <p>支持用户通过手机号定位账号，通过人脸验证后登录账号。</p>
+                  <span class="card-tag">URL跳转</span>
+                </div>
+              </div>
+              <div class="feature-card has-image" onclick="navigate('detail', 'switch-account')">
+                <div class="card-image">
+                  <img src="assets/switch_account.png" alt="切换账号">
+                </div>
+                <div class="card-body">
+                  <h3>切换账号</h3>
+                  <p>切换其他账号登录，内置于登录流程。</p>
+                  <span class="card-tag">URL跳转</span>
+                </div>
+              </div>
+              <div class="feature-card has-image" onclick="navigate('detail', 'personal-info')">
+                <div class="card-image">
+                  <img src="assets/personal_info.png" alt="个人信息">
+                </div>
+                <div class="card-body">
+                  <h3>个人信息</h3>
+                  <p>管理用户个人信息，包括昵称、头像、性别、生日、收货地址等。</p>
+                  <span class="card-tag">URL跳转</span>
+                </div>
+              </div>
+              <div class="feature-card has-image" onclick="navigate('detail', 'account-security')">
+                <div class="card-image">
+                  <img src="assets/account_security.png" alt="账号安全">
+                </div>
+                <div class="card-body">
+                  <h3>账号安全</h3>
+                  <p>提供账号安全管理能力，支持手机号管理、修改密码、三方绑定、设备管理等。</p>
+                  <span class="card-tag">URL跳转</span>
+                </div>
+              </div>
+              <div class="feature-card has-image" onclick="navigate('detail', 'account-cancel')">
+                <div class="card-image">
+                  <img src="assets/account_cancel.png" alt="账号注销">
+                </div>
+                <div class="card-body">
+                  <h3>账号注销</h3>
+                  <p>支持用户发起账号注销流程，满足合规要求。分为全APP注销和单APP注销。</p>
+                  <span class="card-tag">URL跳转</span>
+                </div>
+              </div>
+              <div class="feature-card has-image" onclick="navigate('detail', 'info-view')">
+                <div class="card-image">
+                  <img src="assets/info_view.png" alt="个人信息查阅">
+                </div>
+                <div class="card-body">
+                  <h3>个人信息查阅</h3>
+                  <p>合规要求功能，支持用户查阅当前个人信息，包括账号信息、设备信息等。</p>
+                  <span class="card-tag">URL跳转</span>
+                </div>
+              </div>
+              <div class="feature-card has-image" onclick="navigate('detail', 'info-download')">
+                <div class="card-image">
+                  <img src="assets/info_download.png" alt="个人信息下载">
+                </div>
+                <div class="card-body">
+                  <h3>个人信息下载</h3>
+                  <p>支持用户将账号信息导出，通过邮件方式发送。支持自定义发件人和邮件模板。</p>
+                  <span class="card-tag">URL跳转</span>
+                </div>
+              </div>
+            </div>
+            <button class="scroll-btn scroll-btn-right" onclick="scrollCards(this, 1)">›</button>
+          </div>
+        </section>
+
+        <!-- 模块三：后端接口能力 -->
+        <section id="section-backend" class="module-section">
+          <div class="section-header">
+            <h2>⚙️ 后端接口能力</h2>
+            <p class="section-desc">用户信息查询、登录态校验、融合关系等后端服务接口</p>
+          </div>
+          <div class="table-card-container">
+            <table class="module-table">
+              <thead>
+                <tr>
+                  <th>功能名称</th>
+                  <th>功能说明</th>
+                  <th>接入方式</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>账号信息查询</strong></td>
+                  <td>提供用户信息查询服务，包括基础身份、个人档案、联系方式、行为统计等</td>
+                  <td>后端接口调用</td>
+                  <td><a onclick="navigate('detail', 'user-query')" class="table-link">查看详情</a></td>
+                </tr>
+                <tr>
+                  <td><strong>三方信息查询</strong></td>
+                  <td>查询用户与微信、QQ等第三方平台的账号绑定关系</td>
+                  <td>后端接口调用</td>
+                  <td><a onclick="navigate('detail', 'third-query')" class="table-link">查看详情</a></td>
+                </tr>
+                <tr>
+                  <td><strong>用户登录态校验</strong></td>
+                  <td>校验Token有效性，确认用户登录状态。支持强校验和弱校验</td>
+                  <td>后端接口调用</td>
+                  <td><a onclick="navigate('detail', 'token-verify')" class="table-link">查看详情</a></td>
+                </tr>
+                <tr>
+                  <td><strong>融合关系查询</strong></td>
+                  <td>查询用户在美团生态内的跨平台账号绑定关系（虚绑定/实绑定）</td>
+                  <td>后端接口调用</td>
+                  <td><a onclick="navigate('detail', 'fusion-query')" class="table-link">查看详情</a></td>
+                </tr>
+                <tr>
+                  <td><strong>注销资产校验</strong></td>
+                  <td>用户发起账号注销时，对关联资产进行核查与处理</td>
+                  <td>后端接口调用</td>
+                  <td><a onclick="navigate('detail', 'cancel-asset')" class="table-link">查看详情</a></td>
+                </tr>
+                <tr>
+                  <td><strong>账号消息变动通知</strong></td>
+                  <td>用户数据变更时通过Mafka消息队列主动推送，支持手机号/生日/三方绑定等变更</td>
+                  <td>Mafka消息订阅</td>
+                  <td><a onclick="navigate('detail', 'msg-notify')" class="table-link">查看详情</a></td>
+                </tr>
+                <tr>
+                  <td><strong>用户信息管理工具</strong></td>
+                  <td>后台管理工具，提供查看用户信息、注销、恢复注销等功能</td>
+                  <td>权限申请</td>
+                  <td><a onclick="navigate('detail', 'admin-tool')" class="table-link">查看详情</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 模块四：安全风控 -->
+        <section id="section-security" class="module-section">
+          <div class="section-header">
+            <h2>🛡️ 安全风控</h2>
+            <p class="section-desc">账号安全基线保障、终端防御、验证服务</p>
+          </div>
+          <div class="table-card-container">
+            <table class="module-table">
+              <thead>
+                <tr>
+                  <th>功能名称</th>
+                  <th>功能说明</th>
+                  <th>接入方式</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>账号风控</strong></td>
+                  <td>保障所有业务线用户账号安全基线，防护用户数据安全，降低集团资损</td>
+                  <td>由账号代完成，业务接入底层依赖</td>
+                  <td><a onclick="navigate('detail', 'risk-control')" class="table-link">查看详情</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Guard（终端防御）</strong></td>
+                  <td>验签、设备指纹采集、设备唯一ID生成三种能力，移动端安全防护第一环</td>
+                  <td>客户端/小程序接入并初始化</td>
+                  <td><a onclick="navigate('detail', 'guard')" class="table-link">查看详情</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Yoda（验证服务）</strong></td>
+                  <td>短信验证、人脸验证、人机验证、身份验证等多种验证方式</td>
+                  <td>客户端/小程序集成Yoda SDK</td>
+                  <td><a onclick="navigate('detail', 'yoda')" class="table-link">查看详情</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 模块五：接入参数配置 -->
+        <section id="section-config" class="module-section">
+          <div class="section-header">
+            <h2>🔧 接入参数配置</h2>
+            <p class="section-desc">业务准入配置、登录准入、三方授权等接入必备参数</p>
+          </div>
+          <div class="table-card-container">
+            <table class="module-table">
+              <thead>
+                <tr>
+                  <th>参数名称</th>
+                  <th>功能说明</th>
+                  <th>获取方式</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>joinkey</strong></td>
+                  <td>用户中心登录鉴权核心参数，用于标识业务调用来源和安全保障</td>
+                  <td>用户中心后台申请</td>
+                  <td><a onclick="navigate('detail', 'joinkey')" class="table-link">查看详情</a></td>
+                </tr>
+                <tr>
+                  <td><strong>tokenid</strong></td>
+                  <td>登录准入配置参数，用于Token管理和登录态控制</td>
+                  <td>Token管理系统申请</td>
+                  <td><a onclick="navigate('detail', 'tokenid')" class="table-link">查看详情</a></td>
+                </tr>
+                <tr>
+                  <td><strong>第三方授权参数</strong></td>
+                  <td>接入微信、QQ等三方登录时的OAuth授权参数</td>
+                  <td>向对应平台申请</td>
+                  <td><a onclick="navigate('detail', 'third-auth')" class="table-link">查看详情</a></td>
+                </tr>
+                <tr>
+                  <td><strong>风控参数</strong></td>
+                  <td>risk_app/risk_platform/risk_partner，标识业务来源和风控策略</td>
+                  <td>随joinkey自动分配</td>
+                  <td><a onclick="navigate('detail', 'risk-params')" class="table-link">查看详情</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 模块六：账号组找人地图 -->
+        <section id="section-contact" class="module-section">
+          <div class="section-header">
+            <h2>📞 账号组找人地图</h2>
+            <p class="section-desc">快速找到对应负责人，提需或咨询请直接联系</p>
+          </div>
+          <div class="contact-map-card">
+            <div class="contact-tabs">
+              <button class="contact-tab active" onclick="switchContactTab(this, 'tab-domestic')">境内账号</button>
+              <button class="contact-tab" onclick="switchContactTab(this, 'tab-keeta')">境外账号</button>
+              <button class="contact-tab" onclick="switchContactTab(this, 'tab-ep')">商家EP</button>
+            </div>
+            <!-- 境内账号 tab -->
+            <div class="contact-tab-content active" id="tab-domestic">
+              <table class="contact-table">
+                <thead>
+                  <tr><th>负责人</th><th>负责事项</th><th>联系</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="contact-person">
+                      <div class="person-avatar">周</div>
+                      <div><strong>周悦</strong><br><span class="person-mis">zhouyue</span></div>
+                    </td>
+                    <td class="contact-duties">
+                      <span class="duty-tag">登注方向</span> 账号登录、注册核心流程<br>
+                      <span class="duty-tag">业务需求</span> 业务需求承接（含 Agent 授权）<br>
+                      <span class="duty-tag">外部调用</span> 账号服务对外接口调用<br>
+                      <span class="duty-tag">运维提效</span> 账号服务运维效率提升
+                    </td>
+                    <td class="contact-links">
+                      <a href="https://x.sankuai.com/search?keyword=zhouyue" target="_blank" class="contact-link-btn">大象</a>
+                      <a href="https://tt.sankuai.com/ticket/custom/create/11889/2617" target="_blank" class="contact-link-btn contact-link-tt">提需</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="contact-person">
+                      <div class="person-avatar">陈</div>
+                      <div><strong>陈涛</strong><br><span class="person-mis">chentao</span></div>
+                    </td>
+                    <td class="contact-duties">
+                      <span class="duty-tag">降低客诉</span> 账号相关客诉治理与降低<br>
+                      <span class="duty-tag">业务标准接入</span> 业务线标准化接入账号服务<br>
+                      <span class="duty-tag">财务对接</span> 账号与财务系统对接需求<br>
+                      <span class="duty-tag">风控需求</span> 账号风控策略与需求承接<br>
+                      <span class="duty-tag">监管需求</span> 监管合规要求对接<br>
+                      <span class="duty-tag">个人主页</span> 用户个人主页账号信息展示
+                    </td>
+                    <td class="contact-links">
+                      <a href="https://x.sankuai.com/search?keyword=chentao" target="_blank" class="contact-link-btn">大象</a>
+                      <a href="https://tt.sankuai.com/ticket/custom/create/11889/2617" target="_blank" class="contact-link-btn contact-link-tt">提需</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- 境外账号 tab -->
+            <div class="contact-tab-content" id="tab-keeta">
+              <table class="contact-table">
+                <thead>
+                  <tr><th>负责人</th><th>负责事项</th><th>联系</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="contact-person">
+                      <div class="person-avatar">黄</div>
+                      <div><strong>黄梓泰 Tim</strong><br><span class="person-mis">huangzitai</span></div>
+                    </td>
+                    <td class="contact-duties">
+                      <span class="duty-tag">C端账号能力</span> Keeta C端账号全链路能力建设
+                    </td>
+                    <td class="contact-links">
+                      <a href="https://x.sankuai.com/search?keyword=huangzitai" target="_blank" class="contact-link-btn">大象</a>
+                      <a href="https://tt.sankuai.com/ticket/custom/create/11889/2617" target="_blank" class="contact-link-btn contact-link-tt">提需</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="contact-person">
+                      <div class="person-avatar">周</div>
+                      <div><strong>周悦</strong><br><span class="person-mis">zhouyue</span></div>
+                    </td>
+                    <td class="contact-duties">
+                      <span class="duty-tag">B&D端账号能力</span> Keeta 商家端（B端）与骑手端（D端）账号能力
+                    </td>
+                    <td class="contact-links">
+                      <a href="https://x.sankuai.com/search?keyword=zhouyue" target="_blank" class="contact-link-btn">大象</a>
+                      <a href="https://tt.sankuai.com/ticket/custom/create/11889/2617" target="_blank" class="contact-link-btn contact-link-tt">提需</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- 商家EP tab -->
+            <div class="contact-tab-content" id="tab-ep">
+              <table class="contact-table">
+                <thead>
+                  <tr><th>负责人</th><th>负责事项</th><th>联系</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="contact-person">
+                      <div class="person-avatar">韩</div>
+                      <div><strong>韩隽 Kelly Han</strong><br><span class="person-mis">hanjun</span></div>
+                    </td>
+                    <td class="contact-duties">
+                      <span class="duty-tag">境内商家账号</span> 境内商家账号基础能力建设及需求承接<br>
+                      <span class="duty-tag">境外出海业务</span> 境外 Keemart·小象出海业务账号能力
+                    </td>
+                    <td class="contact-links">
+                      <a href="https://x.sankuai.com/search?keyword=hanjun" target="_blank" class="contact-link-btn">大象</a>
+                      <a href="https://tt.sankuai.com/ticket/custom/create/11889/2617" target="_blank" class="contact-link-btn contact-link-tt">提需</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="contact-map-footer">
+              <a href="https://team-contact-map.mynocode.host/" target="_blank" class="contact-full-link">查看完整找人地图 →</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- 底部CTA -->
+        <section class="cta-section">
+          <div class="cta-inner">
+            <h2>准备好接入了吗？</h2>
+            <p>提交MRD文档，开启接入流程</p>
+            <div class="cta-buttons">
+              <button class="btn-primary" onclick="navigate('mrd')">去接入</button>
+              <a href="https://tt.sankuai.com/ticket/custom/create/11889/2617" target="_blank" class="btn-secondary">了解功能详情提TT</a>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- 功能详情页 -->
+      <div id="page-detail" class="page">
+        <div class="detail-container" id="detailContent">
+          <!-- 动态填充 -->
+        </div>
+      </div>
+
+      <!-- MRD接入页 -->
+      <div id="page-mrd" class="page">
+        <div class="mrd-container">
+          <button class="btn-back" onclick="navigate('home')">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 返回
+          </button>
+          <div class="mrd-header">
+            <h1>提交接入需求</h1>
+            <p>请按照MRD模板整理您的接入需求文档，提交后账号团队将在3个工作日内完成评审</p>
+          </div>
+
+          <div class="mrd-content">
+            <div class="mrd-steps">
+              <div class="step-item">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                  <h3>下载MRD模板</h3>
+                  <p>参考标准MRD模板，填写业务背景、需求来源、目标收益、详细需求描述等内容</p>
+                  <a href="https://km.sankuai.com/collabpage/2723309384" target="_blank" class="btn-outline">查看MRD模板</a>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                  <h3>填写接入信息</h3>
+                  <p>MRD需包含以下核心内容：</p>
+                  <ul class="mrd-checklist">
+                    <li>业务背景和需求来源</li>
+                    <li>目标收益（量化指标）</li>
+                    <li>登录业务形式（客户端/H5/PC/小程序）</li>
+                    <li>需要接入的具体功能模块</li>
+                    <li>预期上线时间和负责人</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                  <h3>填写需求到需求池</h3>
+                  <p>将整理好的接入需求填写到账号需求池，便于团队统一管理和排期</p>
+                  <a href="https://km.sankuai.com/collabpage/2723388418" target="_blank" class="btn-outline">前往需求池</a>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num">4</div>
+                <div class="step-body">
+                  <h3>提交TT工单</h3>
+                  <p>将MRD文档链接通过TT工单提交，账号团队将进行评审和排期</p>
+                  <a href="https://tt.sankuai.com/ticket/custom/create/11889/2617" target="_blank" class="btn-outline">提交TT工单</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="mrd-template-preview">
+              <h3>MRD模板参考结构</h3>
+              <div class="template-structure">
+                <div class="template-item">
+                  <span class="template-icon">📋</span>
+                  <div>
+                    <strong>一、背景</strong>
+                    <p>业务描述、当前现状、为什么需要接入</p>
+                  </div>
+                </div>
+                <div class="template-item">
+                  <span class="template-icon">🎯</span>
+                  <div>
+                    <strong>二、需求来源</strong>
+                    <p>业务方、需求场景、优先级</p>
+                  </div>
+                </div>
+                <div class="template-item">
+                  <span class="template-icon">📈</span>
+                  <div>
+                    <strong>三、目标与收益</strong>
+                    <p>量化目标、预期收益</p>
+                  </div>
+                </div>
+                <div class="template-item">
+                  <span class="template-icon">📝</span>
+                  <div>
+                    <strong>四、详细需求描述</strong>
+                    <p>登录业务形式、功能模块选择、技术要求</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mrd-tips">
+            <h3>💡 小贴士</h3>
+            <p>如果您对接入流程有任何疑问，可以先通过TT咨询，账号产品团队将为您解答。</p>
+            <a href="https://tt.sankuai.com/ticket/custom/create/11889/2617" target="_blank">了解功能详情提TT →</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <p>美团账号产品组 · 用户中心</p>
+        <p class="footer-links">
+          <a href="https://km.sankuai.com/collabpage/2762098971" target="_blank">知识库</a>
+          <span>·</span>
+          <a href="https://km.sankuai.com/collabpage/2722534277" target="_blank">白皮书</a>
+          <span>·</span>
+          <a href="https://tt.sankuai.com/ticket/custom/create/11889/2617" target="_blank">提TT咨询</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
