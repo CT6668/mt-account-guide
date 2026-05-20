@@ -7,12 +7,12 @@ var featureData = {
     images: [
       { url: 'https://km.sankuai.com/api/file/cdn/2722534277/191043166735?contentType=1', caption: '客户端登录页 - 手机一键登录' },
       { url: 'https://km.sankuai.com/api/file/cdn/2722534277/191054950799?contentType=1', caption: '客户端登录页 - 手机验证码登录' },
-      { url: 'assets/client_login_password.png', caption: '客户端登录页 - 密码登录' }
+      { url: 'https://ct6668.github.io/mt-account-guide/assets/client_login_password.png', caption: '客户端登录页 - 密码登录' }
     ],
     configImages: [
       { url: 'https://km.sankuai.com/api/file/cdn/2722534277/190608038433?contentType=1', caption: '客户端可配置内容1' },
       { url: 'https://km.sankuai.com/api/file/cdn/2722534277/191044238250?contentType=1', caption: '客户端可配置内容2' },
-      { url: 'assets/client_config_android_sms.png', caption: 'Android验证码页面可配置内容' }
+      { url: 'https://ct6668.github.io/mt-account-guide/assets/client_config_android_sms.png', caption: 'Android验证码页面可配置内容' }
     ],
     configurable: [
       '自定义文案：支持修改登录页面标题、副标题等文案内容',
@@ -64,12 +64,12 @@ var featureData = {
     category: '账号登录功能',
     desc: '<strong>使用场景</strong><br>i版登录页主要面向<strong>站外业务移动端登录场景</strong>，适用于业务H5页面需要让用户完成美团C端账号登录的情况。如果业务主要在公司App内运行，强烈建议使用客户端原生登录能力；如果业务需要在PC端接入登录，建议使用<a href="https://km.sankuai.com/collabpage/2727018221" target="_blank">扫码登录页</a>。未正确接入登录能力，业务流量可能存在传递多端参数的情况，进而可能导致被误判为跨端风险、引发风控。<br><br><strong>使用功能</strong><br>i版登录页是一个带有账号密码登录、手机号验证码登录、以及微信浏览器环境下三方登录功能以及完整风控流程的C端美团账号登录页。在微信浏览器环境下打开默认展示微信快捷登录，其他浏览器环境下展示手机验证码登录。<br>体验链接：<a href="https://passport.meituan.com/useraccount/ilogin" target="_blank">https://passport.meituan.com/useraccount/ilogin</a><br><br><strong>可配置能力</strong><br>i版登录页支持以下UI元素定制：LOGO定制、地区选择（支持只选某个地区）、按钮底色、文案内容、协议文案内容及颜色、法务链接及颜色。如需高度定制登录样式，可使用<a href="https://km.sankuai.com/collabpage/2726956604" target="_blank">H5登录组件</a>（以JS形式提供，样式完全自定义，但接入成本较高）。',
     images: [
-      { url: 'assets/h5i_wechat_login.png', caption: 'H5-i版 - 微信快捷登录' },
-      { url: 'assets/h5i_sms_login.png', caption: 'H5-i版 - 手机验证码登录' },
-      { url: 'assets/h5i_password_login.png', caption: 'H5-i版 - 密码登录' }
+      { url: 'https://ct6668.github.io/mt-account-guide/assets/h5i_wechat_login.png', caption: 'H5-i版 - 微信快捷登录' },
+      { url: 'https://ct6668.github.io/mt-account-guide/assets/h5i_sms_login.png', caption: 'H5-i版 - 手机验证码登录' },
+      { url: 'https://ct6668.github.io/mt-account-guide/assets/h5i_password_login.png', caption: 'H5-i版 - 密码登录' }
     ],
     configImages: [
-      { url: 'assets/h5i_config.png', caption: 'H5-i版可配置内容标注' }
+      { url: 'https://ct6668.github.io/mt-account-guide/assets/h5i_config.png', caption: 'H5-i版可配置内容标注' }
     ],
     configurable: [
       'LOGO定制：支持替换登录页顶部的品牌LOGO',
@@ -103,10 +103,10 @@ var featureData = {
     category: '账号登录功能',
     desc: '<strong>使用场景</strong><br>扫码登录页面面向<strong>PC端C端美团账号登录场景</strong>，适用于业务Web页面需要让用户通过扫码方式完成美团账号登录的情况。如果业务需要在移动端H5接入登录，建议使用<a href="https://km.sankuai.com/collabpage/2726928774" target="_blank">H5-i版登录页</a>；如果业务在App内运行，建议使用客户端原生登录能力。旧版PC统一登注页正在推进全业务下线，新接入业务请直接使用扫码登录页。<br><br><strong>使用功能</strong><br>扫码登录页是一个带有手机号密码登录、扫码登录（微信、美团App）、短信验证码登录的PC端登录页，支持部分样式定制。同时提供支持车机扫码登录的车机扫码登录页。当前仅支持.meituan域名，非.meituan域名需业务自行实现setToken接口并联系账号后端加白联调。<br>体验链接：<a href="https://passport.meituan.com/useraccount/login" target="_blank">https://passport.meituan.com/useraccount/login</a><br><br><strong>可配置能力</strong><br>扫码登录页当前支持通过URL参数（service）读取样式配置，实现品牌化定制（如NoCode接入示例通过CSS覆盖隐藏美团Logo、替换主色调、自定义背景）。以下9项配置能力<strong>开发中，预计6月上线</strong>：默认登录方式配置（扫码/手机验证码）、顶部标题文案配置或删除、二维码下方说明文案配置或删除、扫码页用户协议文案及链接配置、账号登录入口文案配置或隐藏、底部导航栏各项显隐/文案/跳转链接配置、快捷登录页底部用户协议配置、密码登录页底部用户协议配置、整体页面样式自定义（CSS注入/主题配置）。',
     images: [
-      { url: 'assets/pc_scan_login.png', caption: 'PC扫码登录页' }
+      { url: 'https://ct6668.github.io/mt-account-guide/assets/pc_scan_login.png', caption: 'PC扫码登录页' }
     ],
     configImages: [
-      { url: 'assets/pc_scan_config_annotated.png', caption: 'PC扫码登录页配置项标注（开发中）' }
+      { url: 'https://ct6668.github.io/mt-account-guide/assets/pc_scan_config_annotated.png', caption: 'PC扫码登录页配置项标注（开发中）' }
     ],
     configurable: [
       '① 默认登录方式：支持配置默认展示扫码登录或手机验证码登录（开发中，预计6月上线）',
@@ -183,7 +183,7 @@ var featureData = {
     category: '账号登录功能',
     desc: '<strong>使用场景</strong><br>联合登录组件适用于<strong>公司内业务与第三方App/小程序之间的联合登录场景</strong>，即用户在第三方页面完成授权后，在公司业务页面完成美团C端账号登录。典型场景如美团外卖H5与联通手机营业厅的联合登录。注意：H5联合登录组件只能由公司内业务集成，不可由外部第三方集成。<br><br><strong>使用功能</strong><br>H5联合登录组件是一个供公司内业务与第三方之间联合登录的C端美团账号登录组件，通过业务应用传过来的用户手机号查询或创建美团账号，实现美团账号登录。组件提供了完整的风控流程、默认样式以及页面UI自定义配置项，以JS形式提供，业务方可按需引入。提供两种接入方式：code方式（推荐，符合标准OAuth2.0授权码模式）和access_token方式（已有token直接登录）。<br>线上实例：美团外卖H5 x 联通手机营业厅联合登录。<br>预览地址（微信环境）：<a href="http://portal-portm.sankuai.com/passport/mt-h5authlogin-component?debugcode=test" target="_blank">H5联合登录组件预览</a>',
     images: [
-      { url: 'assets/union_login.mp4', caption: '联合登录演示' }
+      { url: 'https://ct6668.github.io/mt-account-guide/assets/union_login.mp4', caption: '联合登录演示' }
     ],
     accessMethods: [
       { platform: 'code方式接入（推荐）', desc: '符合标准OAuth2.0授权码模式。用户点击登录后，跳转到第三方页面完成授权操作，授权后重定向URL拼接code参数，账号侧通过解析此参数调用后端接口完成联合登录。推荐业务优先以此方式接入。' },
@@ -265,7 +265,7 @@ var featureData = {
     category: '账号登录功能',
     desc: '<strong>使用场景</strong><br>找回密码页面适用于<strong>用户忘记登录密码，需要重新设置密码</strong>的场景。支持在未登录状态下，通过手机号+验证的方式完成密码重置。同时提供PC端找回密码页面。<br><br><strong>使用功能</strong><br>找回密码流程包括：手机号输入（支持传入区号countryCode和手机号phoneNumber自动填充）→环境检测→风控验证（支持短信验证、人脸验证、支付密码验证、三方验证、客服验证等多种方式）→重置密码。<br>线上地址：<a href="https://mtaccount.meituan.com/user/retrieve-password" target="_blank">https://mtaccount.meituan.com/user/retrieve-password</a><br><br><strong>可配置能力</strong><br>支持通过URL参数传入countryCode（区号，默认86）和phoneNumber（手机号）自动填充输入框。依赖KNB桥能力（setLLButton设置标题栏、getStorage获取手机号加密公钥/密码公钥、openPage打开新页面等）。支持通过meituan.getUIConfig桥读取配置颜色实现按钮样式自定义。',
     images: [
-      { url: 'assets/reset_password.png', caption: '找回密码页面' }
+      { url: 'https://ct6668.github.io/mt-account-guide/assets/reset_password.png', caption: '找回密码页面' }
     ],
     configurable: [],
     accessMethods: [
@@ -294,7 +294,7 @@ var featureData = {
     category: '账号登录功能',
     desc: '<strong>使用场景</strong><br>找回账号功能适用于<strong>用户忘记之前使用的账号，需要通过身份验证找回账号</strong>的场景。通常发生在用户久未登录、更换手机号后无法确认原账号等情况。<br><br><strong>使用功能</strong><br>找回账号流程包括：用户通过手机号定位账号，经过人脸验证确认身份后即可自动登录到对应账号。该功能内置于登录流程，用户可通过"遇到问题"页面进入。<br><br><strong>可配置能力</strong><br>该功能内置于登录流程，通过URL跳转方式接入，主要配置为验证方式（人脸验证）和跳转参数。业务方接入时无需额外开发，只需在登录流程中正确配置跳转URL即可。',
     images: [
-      { url: 'assets/find_account.png', caption: '找回账号页面' }
+      { url: 'https://ct6668.github.io/mt-account-guide/assets/find_account.png', caption: '找回账号页面' }
     ],
     configurable: [],
     accessMethods: [
@@ -320,7 +320,7 @@ var featureData = {
     category: '账号登录功能',
     desc: '<strong>使用场景</strong><br>切换账号功能适用于<strong>用户在已登录状态下需要切换到其他账号</strong>的场景。支持用户在已登录的账号列表中快速切换，无需先退出再重新登录，提升多账号用户的使用体验。<br><br><strong>使用功能</strong><br>换登页面展示用户在该设备上登录过的所有账号列表，支持切换登录、新账号登录、移除指定账号等操作。切换成功后等待0.5秒自动跳转到指定页面。页面只有桥交互，不涉及后端接口，因此test和prod环境都可以登录线上账号和测试账号。<br>线上地址：<a href="https://passport.meituan.com/useraccount/switchuser" target="_blank">https://passport.meituan.com/useraccount/switchuser</a><br><br><strong>可配置能力</strong><br>必须传入success_url参数（encode后的换登成功回跳地址，支持native地址和http/https地址）。需要客户端支持KNB通用桥并接入账号SDK（iOS SDK >= 5.35.2，Android SDK >= 5.49.20）。若回跳地址属于Tab类地址，需提前至少1周联系账号侧进行配置。',
     images: [
-      { url: 'assets/switch_account.png', caption: '切换账号页面' }
+      { url: 'https://ct6668.github.io/mt-account-guide/assets/switch_account.png', caption: '切换账号页面' }
     ],
     configurable: [],
     accessMethods: [
@@ -346,7 +346,7 @@ var featureData = {
     category: '账号管理功能',
     desc: '<strong>使用场景</strong><br>个人信息页面适用于<strong>用户查看和编辑个人资料信息</strong>的场景，包括昵称、头像、性别、生日、简介、收货地址等基本身份资料。需要在已登录且App环境内打开。接入前需联系账号PM确认接入需求，并同步联系后端进行joinkey配置，否则会存在审核问题。<br><br><strong>使用功能</strong><br>个人信息页提供用户资料的查看和编辑能力，包括昵称、头像、性别、生日、简介、收货地址等。头像和昵称的修改存在"先审后发"和"回删"机制，修改后会轮询3秒，若未完成审核则需用户重新触发获取时才生效。收货地址在美团App 12.3.400及以上使用MSC版本，其他版本使用H5版本。<br>线上地址：<a href="https://mtaccount.meituan.com/user/person-info?source=group" target="_blank">https://mtaccount.meituan.com/user/person-info?source=group</a><br><br><strong>可配置能力</strong><br>支持配置展示哪些条目（生日、收货地址、头像、昵称、简介是否展示）。必须传入source参数（业务方自行定义key后联系账号侧配置），可选传入channel（业务渠道参数）和cid（入口页面cid）。需要客户端支持KNB通用桥并接入账号SDK（iOS >= 5.39.4，Android >= 5.56.10）。头像和昵称的修改存在"先审后发"和"回删"机制，因此不是实时生效且存在被删除的可能性。',
     images: [
-      { url: 'assets/personal_info.png', caption: '个人信息页面' }
+      { url: 'https://ct6668.github.io/mt-account-guide/assets/personal_info.png', caption: '个人信息页面' }
     ],
     configurable: [],
     accessMethods: [
@@ -372,7 +372,7 @@ var featureData = {
     category: '账号管理功能',
     desc: '<strong>使用场景</strong><br>安全中心页面适用于<strong>用户需要管理账号安全设置</strong>的场景，包括修改密码、管理三方绑定、设备管理、注销账号等。业务App接入后，用户可在App内直接访问账号安全管理功能，无需跳转到外部页面。<br><br><strong>使用功能</strong><br>安全中心页面提供以下账号安全管理能力：手机号管理（换绑手机号）、修改登录密码、管理三方绑定（微信/QQ等社交账号绑定）、设备管理、注销账号入口。页面内置人脸识别模块和用户协议页面。跳链上需传入service参数，否则只能走默认配置。<br>线上地址：<a href="https://mtaccount.meituan.com/user/safety-center" target="_blank">https://mtaccount.meituan.com/user/safety-center</a><br><br><strong>可配置能力</strong><br>安全中心页面通过service参数区分不同业务方配置。业务方需确认是否支持yoda://协议（用于打开原生页面）。密码安全等级规则可配置，不同业务方的用户协议链接可单独配置。依赖KNB桥能力（包括uaInfo、subscribe、getStorage、getUserInfo、getAppInfo、getDeviceInfo、openPage、Semver等）。',
     images: [
-      { url: 'assets/account_security.png', caption: '账号安全页面' }
+      { url: 'https://ct6668.github.io/mt-account-guide/assets/account_security.png', caption: '账号安全页面' }
     ],
     configurable: [],
     accessMethods: [
@@ -398,7 +398,7 @@ var featureData = {
     category: '账号管理功能',
     desc: '<strong>使用场景</strong><br>账号注销页面适用于<strong>业务App需要提供账号注销入口以满足合规要求</strong>的场景。分为全APP注销（仅美团APP）和单APP注销（其他所有App），接入前必须联系账号PM确认接入需求，并与风控侧确认相关风控参数。<br><br><strong>使用功能</strong><br>账号注销页面提供完整的注销流程：注销首页提示→资产确认→资产阻塞检查→注销原因填写→注销确认。支持通过KNB.publish发送注销成功广播（局部广播和全局广播），业务方可监听注销结果并执行对应业务逻辑。已支持鸿蒙系统适配（标准化KNB容器）。注意：注销后token已失效，不可用于获取用户信息。<br><br><strong>可配置能力</strong><br>前端配置：通过URL query参数配置appName、cancelAll、cancelChannel、风控参数（risk_app/risk_platform/risk_partner）、注销成功回跳地址（succ_url）等。通过Lion配置支持自定义注销首页和资产阻塞页的文案内容（appText、tipsText、warningTextList、agreementLink、bottomText等）。后端配置：支持配置资产确认页和阻塞页的资产项、注销原因列表。按钮和选择框色值可通过meituan.getUIConfig桥配置。',
     images: [
-      { url: 'assets/account_cancel.png', caption: '账号注销页面' }
+      { url: 'https://ct6668.github.io/mt-account-guide/assets/account_cancel.png', caption: '账号注销页面' }
     ],
     configurable: [],
     accessMethods: [
@@ -425,7 +425,7 @@ var featureData = {
     category: '账号管理功能',
     desc: '<strong>使用场景</strong><br>个人信息查阅页面是<strong>为满足《个人信息保护法》合规要求</strong>而提供的功能，业务App接入后可让用户查阅当前账号关联的个人信息，满足用户个人信息查阅权。<br><br><strong>使用功能</strong><br>个人信息查阅页面支持用户查看当前账号的个人信息，包括账号信息（用户ID、注册时间等）、设备信息（登录设备等）、应用相关信息。通过URL跳转方式接入。<br><br><strong>可配置能力</strong><br>个人信息查阅页面主要为合规标准功能，配置项较少。业务方通过URL跳转接入后即可使用，展示内容由账号侧统一控制。',
     images: [
-      { url: 'assets/info_view.png', caption: '个人信息查阅页面' }
+      { url: 'https://ct6668.github.io/mt-account-guide/assets/info_view.png', caption: '个人信息查阅页面' }
     ],
     configurable: [],
     accessMethods: [
@@ -451,7 +451,7 @@ var featureData = {
     category: '账号管理功能',
     desc: '<strong>使用场景</strong><br>个人信息下载页面是<strong>为满足合规要求，支持用户将账号个人信息导出</strong>的功能。用户可通过该页面将账号信息以邮件方式发送给自己。可单独接入个人信息下载页面，也可接入包含个人信息下载的隐私管理页面。<br><br><strong>使用功能</strong><br>个人信息下载页面支持用户通过短信验证后，将账号信息以邮件形式发送到用户邮箱。导出信息包括用户名、头像、手机号、账号注册时间等。接入前需确保用户已登录，未登录情况下页面功能无法使用。<br>单独接入地址：<a href="https://passport.meituan.com/useraccount/messagedownload" target="_blank">https://passport.meituan.com/useraccount/messagedownload</a><br><br><strong>可配置能力</strong><br>支持自定义发件人和发件邮箱（默认发件人为"美团"，默认邮箱为it_meituan@meituan.com）。支持自定义邮件模板（可完全使用美团模板、部分替换图标/来源/按钮颜色、或提供完全自定义的HTML模板）。必传参数：joinkey和packageName，可选配置短信模板、页面颜色等。依赖KNB桥能力。',
     images: [
-      { url: 'assets/info_download.png', caption: '个人信息下载页面' }
+      { url: 'https://ct6668.github.io/mt-account-guide/assets/info_download.png', caption: '个人信息下载页面' }
     ],
     configurable: [],
     accessMethods: [
