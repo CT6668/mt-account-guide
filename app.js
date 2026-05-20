@@ -935,7 +935,99 @@ function switchContactTab(btn, tabId) {
   if (target) target.classList.add('active');
 }
 
+// === 悬浮智能机器人 ===
+function initAiBot() {
+  // 创建DOM
+  var fab = document.createElement('div');
+  fab.className = 'ai-bot-fab';
+  fab.innerHTML = '<button class="ai-bot-fab-btn" aria-label="智能助手">' +
+    '<svg width="28" height="28" viewBox="0 0 32 32" fill="none">' +
+    '<rect x="8" y="10" width="16" height="14" rx="4" fill="#fff"/>' +
+    '<circle cx="12.5" cy="17" r="2" fill="#5E6AD2"/>' +
+    '<circle cx="19.5" cy="17" r="2" fill="#5E6AD2"/>' +
+    '<rect x="14" y="21" width="4" height="2" rx="1" fill="#5E6AD2"/>' +
+    '<rect x="15" y="5" width="2" height="5" rx="1" fill="#fff"/>' +
+    '<circle cx="16" cy="4" r="2" fill="#fff"/>' +
+    '<rect x="5" y="14" width="3" height="2" rx="1" fill="#fff"/>' +
+    '<rect x="24" y="14" width="3" height="2" rx="1" fill="#fff"/>' +
+    '</svg>' +
+    '</button>' +
+    '<div class="ai-bot-toast">机器人功能接入中，请稍后</div>';
+  document.body.appendChild(fab);
+
+  var toast = fab.querySelector('.ai-bot-toast');
+  var isDragging = false;
+  var hasMoved = false;
+  var startX, startY, fabX, fabY;
+  var toastTimer = null;
+
+  // 点击显示 toast（绑定在整个fab容器上，确保点击任何部分都能触发）
+  fab.addEventListener('click', function(e) {
+    if (hasMoved) return; // 拖动结束不触发点击
+    e.stopPropagation();
+    toast.classList.add('show');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function() {
+      toast.classList.remove('show');
+    }, 2000);
+  });
+
+  // 拖动逻辑
+  function onPointerDown(e) {
+    isDragging = true;
+    hasMoved = false;
+    startX = e.clientX;
+    startY = e.clientY;
+    var rect = fab.getBoundingClientRect();
+    fabX = rect.left;
+    fabY = rect.top;
+    fab.setPointerCapture(e.pointerId);
+  }
+
+  function onPointerMove(e) {
+    if (!isDragging) return;
+    var dx = e.clientX - startX;
+    var dy = e.clientY - startY;
+    if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+      if (!hasMoved) {
+        hasMoved = true;
+        fab.classList.add('dragging');
+      }
+    }
+    if (!hasMoved) return;
+    var newX = fabX + dx;
+    var newY = fabY + dy;
+    // 限制在视口内
+    var maxX = window.innerWidth - fab.offsetWidth;
+    var maxY = window.innerHeight - fab.offsetHeight;
+    newX = Math.max(0, Math.min(newX, maxX));
+    newY = Math.max(0, Math.min(newY, maxY));
+    fab.style.left = newX + 'px';
+    fab.style.top = newY + 'px';
+    fab.style.right = 'auto';
+    fab.style.bottom = 'auto';
+  }
+
+  function onPointerUp(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    fab.classList.remove('dragging');
+    fab.releasePointerCapture(e.pointerId);
+    // 如果发生了拖动，延迟重置hasMoved，让click事件能检测到拖动并跳过
+    if (hasMoved) {
+      setTimeout(function() { hasMoved = false; }, 100);
+    }
+  }
+
+  fab.addEventListener('pointerdown', onPointerDown);
+  fab.addEventListener('pointermove', onPointerMove);
+  fab.addEventListener('pointerup', onPointerUp);
+  // 确保触摸设备也不会因长按触发上下文菜单
+  fab.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+}
+
 // 初始化
 document.addEventListener('DOMContentLoaded', function() {
   navigate('home');
+  initAiBot();
 });
